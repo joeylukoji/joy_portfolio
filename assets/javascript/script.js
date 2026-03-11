@@ -198,6 +198,8 @@ function init() {
     window.addEventListener('resize', onWindowResize);
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('click', onClick);
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
 
     document.getElementById('projectCount').textContent = projects.length;
 
@@ -280,19 +282,51 @@ function createSphere() {
     sphereGroup.add(bgSphere);
 }
 
-function onMouseMove(event) {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+function setPointerFromEvent(x, y) {
+    mouse.x = (x / window.innerWidth) * 2 - 1;
+    mouse.y = -(y / window.innerHeight) * 2 + 1;
 
     const label = document.getElementById('hoverLabel');
-    label.style.left = event.clientX + 'px';
-    label.style.top = event.clientY + 'px';
+    if (label) {
+        label.style.left = x + 'px';
+        label.style.top = y + 'px';
+    }
+}
+
+function onMouseMove(event) {
+    setPointerFromEvent(event.clientX, event.clientY);
+}
+
+function onTouchMove(event) {
+    if (!event.touches || event.touches.length === 0) return;
+    const t = event.touches[0];
+    setPointerFromEvent(t.clientX, t.clientY);
+}
+
+function pickTileAtEvent(event) {
+    let x;
+    let y;
+    if (event.touches && event.touches.length) {
+        x = event.touches[0].clientX;
+        y = event.touches[0].clientY;
+    } else {
+        x = event.clientX;
+        y = event.clientY;
+    }
+    setPointerFromEvent(x, y);
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(tiles);
+    return intersects.length ? intersects[0].object : null;
 }
 
 function onClick(event) {
-    if (hoveredTile) {
-        openDetail(hoveredTile.userData.project);
-    }
+    const tile = pickTileAtEvent(event);
+    if (tile) openDetail(tile.userData.project);
+}
+
+function onTouchStart(event) {
+    const tile = pickTileAtEvent(event);
+    if (tile) openDetail(tile.userData.project);
 }
 
 function checkIntersection() {
