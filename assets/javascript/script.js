@@ -132,6 +132,11 @@ let touchStartX = 0;
 let touchStartY = 0;
 let touchMoved = false;
 let touchStartTime = 0;
+let pointerDownId = null;
+let pointerStartX = 0;
+let pointerStartY = 0;
+let pointerMoved = false;
+let pointerStartTime = 0;
 const touchTapThreshold = 12;
 const touchTapMaxTime = 350;
 
@@ -208,6 +213,10 @@ function init() {
     renderer.domElement.addEventListener('touchstart', onTouchStart, { passive: true });
     renderer.domElement.addEventListener('touchmove', onTouchMove, { passive: true });
     renderer.domElement.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    renderer.domElement.addEventListener('pointerdown', onPointerDown, { passive: true });
+    renderer.domElement.addEventListener('pointermove', onPointerMove, { passive: true });
+    renderer.domElement.addEventListener('pointerup', onPointerUp, { passive: true });
 
     document.getElementById('projectCount').textContent = projects.length;
 
@@ -353,6 +362,35 @@ function onTouchStart(event) {
 function onTouchEnd(event) {
     if (touchMoved) return;
     if (Date.now() - touchStartTime > touchTapMaxTime) return;
+    const tile = pickTileAtEvent(event);
+    if (tile) openDetail(tile.userData.project);
+}
+
+function onPointerDown(event) {
+    if (event.pointerType !== 'touch') return;
+    pointerDownId = event.pointerId;
+    pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+    pointerMoved = false;
+    pointerStartTime = Date.now();
+}
+
+function onPointerMove(event) {
+    if (event.pointerType !== 'touch') return;
+    if (pointerDownId !== event.pointerId) return;
+    const dx = event.clientX - pointerStartX;
+    const dy = event.clientY - pointerStartY;
+    if (Math.hypot(dx, dy) > touchTapThreshold) {
+        pointerMoved = true;
+    }
+}
+
+function onPointerUp(event) {
+    if (event.pointerType !== 'touch') return;
+    if (pointerDownId !== event.pointerId) return;
+    pointerDownId = null;
+    if (pointerMoved) return;
+    if (Date.now() - pointerStartTime > touchTapMaxTime) return;
     const tile = pickTileAtEvent(event);
     if (tile) openDetail(tile.userData.project);
 }
