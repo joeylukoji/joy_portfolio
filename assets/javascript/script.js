@@ -70,7 +70,7 @@
     },
     {
         id: 8,
-        title: "Portrait Série",
+        title: "Developpement de jeux",
         category: "jeux videos",
         color: "#f59e0b",
         image: "assets/img/godot.png",
@@ -128,6 +128,10 @@ let raycaster, mouse;
 let hoveredTile = null;
 let currentFilter = 'all';
 let bgSphere;
+let touchStartX = 0;
+let touchStartY = 0;
+let touchMoved = false;
+const touchTapThreshold = 12;
 
 function applyTheme(mode) {
     const isLight = mode === 'light';
@@ -200,6 +204,7 @@ function init() {
     window.addEventListener('click', onClick);
     window.addEventListener('touchstart', onTouchStart, { passive: true });
     window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
 
     document.getElementById('projectCount').textContent = projects.length;
 
@@ -300,6 +305,11 @@ function onMouseMove(event) {
 function onTouchMove(event) {
     if (!event.touches || event.touches.length === 0) return;
     const t = event.touches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    if (Math.hypot(dx, dy) > touchTapThreshold) {
+        touchMoved = true;
+    }
     setPointerFromEvent(t.clientX, t.clientY);
 }
 
@@ -325,6 +335,15 @@ function onClick(event) {
 }
 
 function onTouchStart(event) {
+    if (!event.touches || event.touches.length === 0) return;
+    const t = event.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchMoved = false;
+}
+
+function onTouchEnd(event) {
+    if (touchMoved) return;
     const tile = pickTileAtEvent(event);
     if (tile) openDetail(tile.userData.project);
 }
