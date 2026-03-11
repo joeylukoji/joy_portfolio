@@ -3,7 +3,7 @@
         title: "E-commerce React",
         category: "web",
         color: "#ffffff",
-        image: "assets/img/marketplace.png",
+        image: "assets/img/marketplace.webp",
         description: "Plateforme e-commerce complète avec panier, paiement Stripe et dashboard admin.",
         skills: ["Vites js", "fast api (python)", "Postgresql", "Stripe"],
         details: ["Authentification JWT", "Paiement sécurisé", "Dashboard analytics", "Responsive design"]
@@ -13,7 +13,7 @@
         title: "Plateforme de reservation d'appartements",
         category: "web",
         color: "#cfe0ff",
-        image: "assets/img/Jachyvhamappartements.png",
+        image: "assets/img/Jachyvhamappartements.webp",
         description: "Création complète d'une plateforme de reservation pour les appartements Jachyvamapartements..",
         skills: ["Figma", "React js ", "ChadcnUi", "Supabase"],
         details: ["Authentification JWT", "reservation sécurisé", "Dashboard analytics", "Responsive design", "Gestionnaire de stock et budget integrés"]
@@ -23,7 +23,7 @@
         title: "Plateforme de commande de voiture ",
         category: "web",
         color: "#ff7424",
-        image: "assets/img/roadbuisness.png",
+        image: "assets/img/roadbuisness.webp",
         description: "Creation d'une plateforme de commande de voiture pour l'entreprise Road business ",
         skills: ["React js", "Django", "PostgreSQL", "Docker"],
         details: ["Architecture modulaire", "Tests automatisés", "CI/CD", "Documentation"]
@@ -33,7 +33,7 @@
         title: "Chatbot medical Niketkaps ",
         category: "web, IA, recherche",
         color: "#f59e0b",
-        image: "assets/img/niketkaps.png",
+        image: "assets/img/niketkaps.webp",
         description: "Developpement d'une application de chatbot medical, avec integration LLM et du protocole RAG",
         skills: [" Systeme RAG, Temps reel, Django et React js"],
         details: ["Authentification JWT", "reservation sécurisé", "Dashboard analytics", "Responsive design", "Gestionnaire de stock et budget integrés"]
@@ -43,7 +43,7 @@
         title: "Systeme de présence academique et scolaire ",
         category: "web",
         color: "#73ff83",
-        image: "assets/img/presence.png",
+        image: "assets/img/presence.webp",
         description: "Application web de gestion de presence et rapport.",
         skills: [, "Javascript vanilla", "Tailwindcss", "Django", "C++"],
         details: ["Authentification JWT ", "Multi role Admin - Etudiants - Professeurs"]
@@ -53,7 +53,7 @@
         title: "Gestionnaire de magasin de vente de produit tech",
         category: "desktop",
         color: "#ffa7a7",
-        image: "assets/img/gestionmagasinjava.png",
+        image: "assets/img/gestionmagasinjava.webp",
         description: "Conception d'une plateforme de gestion complete version ERP d'un magasin",
         skills: ["Java", "Javafx", "MySQL"],
         details: ["Authentification", "Application ERP", "Dashboard analytics"]
@@ -63,7 +63,7 @@
         title: "Machine Learning et Deeplearning",
         category: "IA",
         color: "#10b981",
-        image: "assets/img/recherche.png",
+        image: "assets/img/recherche.webp",
         description: "Modèle de prédiction du cancert du foie et de son evolution.",
         skills: ["Python", "Pytorch", "Pandas", "Scikit-learn"],
         details: ["Data cleaning", "Feature engineering", "Model tuning"]
@@ -73,7 +73,7 @@
         title: "Developpement de jeux",
         category: "jeux videos",
         color: "#f59e0b",
-        image: "assets/img/godot.png",
+        image: "assets/img/godot.webp",
         description: " Developpement de jeux videos avec Unity, Godot en C#.",
         skills: ["C#", "Asset, Game Object et Component", "Integration IA"],
         details: ["20 modèles", "Éclairage de jeux", "Personnage autonome", "3D et 2D"]
@@ -83,7 +83,7 @@
         title: "Competence en modelisation UML",
         category: "Recherche",
         color: "#aacbff",
-        image: "assets/img/UML.png",
+        image: "assets/img/UML.webp",
         description: "conception des diagrame de classe en UML.",
         skills: ["Architecture logicielle"],
         details: ["A partir de diagramme de cas d'utilisation conception de diagramme de cas d'utilisation "]
@@ -93,7 +93,7 @@
         title: "Competence en modelisation Merise",
         category: "Recherche",
         color: "#ceb9ff",
-        image: "assets/img/merise.png",
+        image: "assets/img/merise.webp",
         description: "Competence en Modelisation Merise pour les bases de données",
         skills: ["JMerise", "Design system"],
         details: ["Diagramme MLD", "Diagramme MCD", " Dictionnaire de donnée", "MOD et MOT"]
@@ -103,7 +103,7 @@
         title: "Mining award",
         category: "web",
         color: "#ffea00",
-        image: "assets/img/miningaward.png",
+        image: "assets/img/miningaward.webp",
         description: "Developpement d'une plateforme pour l'asbl Mining award qui récommence les meilleurs acteurs miniers",
         skills: ["React js", "Django", "api rest"],
         details: ["Api rest", " Postgresql", "Gestion multi-role Admin-Entreprise-participant", "Tests unitaires"]
@@ -131,7 +131,9 @@ let bgSphere;
 let touchStartX = 0;
 let touchStartY = 0;
 let touchMoved = false;
+let touchStartTime = 0;
 const touchTapThreshold = 12;
+const touchTapMaxTime = 350;
 
 function applyTheme(mode) {
     const isLight = mode === 'light';
@@ -172,6 +174,7 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     document.getElementById('canvas-container').appendChild(renderer.domElement);
+    renderer.domElement.style.touchAction = 'none';
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -202,9 +205,9 @@ function init() {
     window.addEventListener('resize', onWindowResize);
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('click', onClick);
-    window.addEventListener('touchstart', onTouchStart, { passive: true });
-    window.addEventListener('touchmove', onTouchMove, { passive: true });
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
+    renderer.domElement.addEventListener('touchstart', onTouchStart, { passive: true });
+    renderer.domElement.addEventListener('touchmove', onTouchMove, { passive: true });
+    renderer.domElement.addEventListener('touchend', onTouchEnd, { passive: true });
 
     document.getElementById('projectCount').textContent = projects.length;
 
@@ -340,10 +343,12 @@ function onTouchStart(event) {
     touchStartX = t.clientX;
     touchStartY = t.clientY;
     touchMoved = false;
+    touchStartTime = Date.now();
 }
 
 function onTouchEnd(event) {
     if (touchMoved) return;
+    if (Date.now() - touchStartTime > touchTapMaxTime) return;
     const tile = pickTileAtEvent(event);
     if (tile) openDetail(tile.userData.project);
 }
