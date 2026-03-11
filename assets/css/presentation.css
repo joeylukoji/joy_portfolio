@@ -1,0 +1,290 @@
+body {
+    overflow: auto;
+    background: #000;
+    min-height: 100vh;
+}
+
+.presentation-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: #000;
+}
+
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.tech-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.tech-tag:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.tech-tag.frontend {
+    border-color: rgba(59, 130, 246, 0.4);
+    color: #93c5fd;
+}
+
+.tech-tag.frontend:hover {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.tech-tag.backend {
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #86efac;
+}
+
+.tech-tag.backend:hover {
+    background: rgba(34, 197, 94, 0.15);
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateX(-4px);
+}
+
+.section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.7), rgba(139, 92, 246, 0.7));
+    border-radius: 2px;
+    margin: 24px auto;
+}
+
+.card-glow {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(20px);
+    transition: border-color 0.3s;
+}
+
+.card-glow:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+    display: inline-block;
+}
+
+@keyframes pulse-dot {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.3);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-delay-1 {
+    animation-delay: 0.1s;
+    opacity: 0;
+}
+
+.fade-in-delay-2 {
+    animation-delay: 0.25s;
+    opacity: 0;
+}
+
+.fade-in-delay-3 {
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.fade-in-delay-4 {
+    animation-delay: 0.55s;
+    opacity: 0;
+}
+
+#themeToggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+#themeToggle:hover {
+    transform: rotate(20deg);
+}
+
+body.light-mode {
+    background: #e2e3e7 !important;
+}
+
+body.light-mode .presentation-bg {
+    background: #e2e3e7;
+}
+
+body.light-mode .grid-overlay {
+    opacity: 1;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode p,
+body.light-mode span {
+    color: #111 !important;
+}
+
+body.light-mode .section-label {
+    color: #666 !important;
+}
+
+body.light-mode .text-gray-400,
+body.light-mode .text-gray-500 {
+    color: #555 !important;
+}
+
+body.light-mode .text-gray-300 {
+    color: #444 !important;
+}
+
+body.light-mode .text-gray-600 {
+    color: #555 !important;
+}
+
+body.light-mode .card-glow {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .tech-tag {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #111 !important;
+}
+
+body.light-mode .back-btn {
+    background: rgba(0, 0, 0, 0.06) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #111 !important;
+}
+
+body.light-mode .profile-photo {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .divider {
+    background: linear-gradient(90deg, #333, #999);
+}
+
+body.light-mode [style*="position:fixed"] div[style*="border-radius:9999px"],
+body.light-mode [style*="position:fixed"] div[style*="border-radius:50%"] {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #111 !important;
+}
+
+body.light-mode a {
+    color: #111 !important;
+}
+
+body.light-mode #themeToggle {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #111;
+}
