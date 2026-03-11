@@ -322,10 +322,14 @@ function pickTileAtEvent(event) {
     if (event.touches && event.touches.length) {
         x = event.touches[0].clientX;
         y = event.touches[0].clientY;
+    } else if (event.changedTouches && event.changedTouches.length) {
+        x = event.changedTouches[0].clientX;
+        y = event.changedTouches[0].clientY;
     } else {
         x = event.clientX;
         y = event.clientY;
     }
+    if (typeof x !== 'number' || typeof y !== 'number') return null;
     setPointerFromEvent(x, y);
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(tiles);
