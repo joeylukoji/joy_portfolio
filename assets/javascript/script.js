@@ -92,7 +92,7 @@
         category: "Recherche",
         color: "#aacbff",
         image: "assets/img/UML.webp",
-        description: "conception des diagrame de classe en UML.",
+        description: "conception des diagrames de classe en UML.",
         skills: ["Architecture logicielle"],
         details: ["A partir de diagramme de cas d'utilisation conception de diagramme de cas d'utilisation "],
         link: ""
@@ -114,7 +114,7 @@
         category: "web",
         color: "#ffea00",
         image: "assets/img/miningaward.webp",
-        description: "Developpement d'une plateforme pour l'asbl Mining award qui récommence les meilleurs acteurs miniers",
+        description: "Developpement d'une plateforme pour l'asbl Mining award qui récompense les meilleurs acteurs miniers",
         skills: ["React js", "Django", "api rest"],
         details: ["Api rest", " Postgresql", "Gestion multi-role Admin-Entreprise-participant", "Tests unitaires"],
         link: ""
