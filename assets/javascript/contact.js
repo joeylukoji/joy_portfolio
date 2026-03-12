@@ -24,6 +24,18 @@ function toggleTheme() {
 }
 
 (function() {
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', toggleTheme);
+    }
+
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', handleSubmit);
+    }
+})();
+
+(function() {
     const saved = localStorage.getItem('theme');
     if (saved === 'light') {
         document.body.classList.add('light-mode');

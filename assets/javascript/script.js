@@ -6,7 +6,8 @@
         image: "assets/img/marketplace.webp",
         description: "Plateforme e-commerce complète avec panier, paiement Stripe et dashboard admin.",
         skills: ["Vites js", "fast api (python)", "Postgresql", "Stripe"],
-        details: ["Authentification JWT", "Paiement sécurisé", "Dashboard analytics", "Responsive design"]
+        details: ["Authentification JWT", "Paiement sécurisé", "Dashboard analytics", "Responsive design"],
+        link: ""
     },
     {
         id: 2,
@@ -16,7 +17,8 @@
         image: "assets/img/Jachyvhamappartements.webp",
         description: "Création complète d'une plateforme de reservation pour les appartements Jachyvamapartements..",
         skills: ["Figma", "React js ", "ChadcnUi", "Supabase"],
-        details: ["Authentification JWT", "reservation sécurisé", "Dashboard analytics", "Responsive design", "Gestionnaire de stock et budget integrés"]
+        details: ["Authentification JWT", "reservation sécurisé", "Dashboard analytics", "Responsive design", "Gestionnaire de stock et budget integrés"],
+        link: "https://www.jachyvhamapartements.com/rooms"
     },
     {
         id: 3,
@@ -26,7 +28,8 @@
         image: "assets/img/roadbuisness.webp",
         description: "Creation d'une plateforme de commande de voiture pour l'entreprise Road business ",
         skills: ["React js", "Django", "PostgreSQL", "Docker"],
-        details: ["Architecture modulaire", "Tests automatisés", "CI/CD", "Documentation"]
+        details: ["Architecture modulaire", "Tests automatisés", "CI/CD", "Documentation"],
+        link: ""
     },
     {
         id: 4,
@@ -36,7 +39,8 @@
         image: "assets/img/niketkaps.webp",
         description: "Developpement d'une application de chatbot medical, avec integration LLM et du protocole RAG",
         skills: [" Systeme RAG, Temps reel, Django et React js"],
-        details: ["Authentification JWT", "reservation sécurisé", "Dashboard analytics", "Responsive design", "Gestionnaire de stock et budget integrés"]
+        details: ["Authentification JWT", "reservation sécurisé", "Dashboard analytics", "Responsive design", "Gestionnaire de stock et budget integrés"],
+        link: "https://niketkaps.vercel.app/"
     },
     {
         id: 5,
@@ -46,7 +50,8 @@
         image: "assets/img/presence.webp",
         description: "Application web de gestion de presence et rapport.",
         skills: [, "Javascript vanilla", "Tailwindcss", "Django", "C++"],
-        details: ["Authentification JWT ", "Multi role Admin - Etudiants - Professeurs"]
+        details: ["Authentification JWT ", "Multi role Admin - Etudiants - Professeurs"],
+        link: ""
     },
     {
         id: 6,
@@ -56,7 +61,8 @@
         image: "assets/img/gestionmagasinjava.webp",
         description: "Conception d'une plateforme de gestion complete version ERP d'un magasin",
         skills: ["Java", "Javafx", "MySQL"],
-        details: ["Authentification", "Application ERP", "Dashboard analytics"]
+        details: ["Authentification", "Application ERP", "Dashboard analytics"],
+        link: ""
     },
     {
         id: 7,
@@ -66,7 +72,8 @@
         image: "assets/img/recherche.webp",
         description: "Modèle de prédiction du cancert du foie et de son evolution.",
         skills: ["Python", "Pytorch", "Pandas", "Scikit-learn"],
-        details: ["Data cleaning", "Feature engineering", "Model tuning"]
+        details: ["Data cleaning", "Feature engineering", "Model tuning"],
+        link: ""
     },
     {
         id: 8,
@@ -76,7 +83,8 @@
         image: "assets/img/godot.webp",
         description: " Developpement de jeux videos avec Unity, Godot en C#.",
         skills: ["C#", "Asset, Game Object et Component", "Integration IA"],
-        details: ["20 modèles", "Éclairage de jeux", "Personnage autonome", "3D et 2D"]
+        details: ["20 modèles", "Éclairage de jeux", "Personnage autonome", "3D et 2D"],
+        link: ""
     },
     {
         id: 9,
@@ -86,7 +94,8 @@
         image: "assets/img/UML.webp",
         description: "conception des diagrame de classe en UML.",
         skills: ["Architecture logicielle"],
-        details: ["A partir de diagramme de cas d'utilisation conception de diagramme de cas d'utilisation "]
+        details: ["A partir de diagramme de cas d'utilisation conception de diagramme de cas d'utilisation "],
+        link: ""
     },
     {
         id: 10,
@@ -96,7 +105,8 @@
         image: "assets/img/merise.webp",
         description: "Competence en Modelisation Merise pour les bases de données",
         skills: ["JMerise", "Design system"],
-        details: ["Diagramme MLD", "Diagramme MCD", " Dictionnaire de donnée", "MOD et MOT"]
+        details: ["Diagramme MLD", "Diagramme MCD", " Dictionnaire de donnée", "MOD et MOT"],
+        link: ""
     },
     {
         id: 11,
@@ -106,7 +116,8 @@
         image: "assets/img/miningaward.webp",
         description: "Developpement d'une plateforme pour l'asbl Mining award qui récommence les meilleurs acteurs miniers",
         skills: ["React js", "Django", "api rest"],
-        details: ["Api rest", " Postgresql", "Gestion multi-role Admin-Entreprise-participant", "Tests unitaires"]
+        details: ["Api rest", " Postgresql", "Gestion multi-role Admin-Entreprise-participant", "Tests unitaires"],
+        link: ""
     },
 
     {
@@ -117,7 +128,8 @@
         image: "",
         description: "",
         skills: ["", "", "", ""],
-        details: ["", "", "", ""]
+        details: ["", "", "", ""],
+        link: ""
     }
 ];
 
@@ -166,6 +178,24 @@ function toggleTheme() {
     const mode = isLight ? 'light' : 'dark';
     localStorage.setItem('theme', mode);
     applyTheme(mode);
+}
+
+function setupUIControls() {
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', toggleTheme);
+    }
+
+    const closeBtn = document.getElementById('closeDetailBtn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeDetail);
+    }
+
+    document.querySelectorAll('.filter-btn[data-category]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterCategory(btn.dataset.category, btn);
+        });
+    });
 }
 
 function init() {
@@ -222,6 +252,8 @@ function init() {
 
     const savedTheme = localStorage.getItem('theme') || 'dark';
     applyTheme(savedTheme);
+
+    setupUIControls();
 
     animate();
 
@@ -449,6 +481,13 @@ function checkIntersection() {
 
 function openDetail(project) {
     const panel = document.getElementById('detailPanel');
+    const detailLink = document.getElementById('detailLink');
+
+    document.body.classList.add('detail-open');
+    if (controls) {
+        controls.enabled = false;
+        controls.autoRotate = false;
+    }
 
     document.getElementById('detailCategory').textContent = project.category.toUpperCase();
     document.getElementById('detailCategory').style.color = project.color;
@@ -476,20 +515,52 @@ function openDetail(project) {
         listContainer.appendChild(li);
     });
 
+    if (detailLink) {
+        if (!detailLink.dataset.defaultHtml) {
+            detailLink.dataset.defaultHtml = detailLink.innerHTML;
+        }
+
+        if (project.link) {
+            detailLink.classList.remove('detail-link-disabled');
+            detailLink.innerHTML = detailLink.dataset.defaultHtml;
+            detailLink.href = project.link;
+            detailLink.setAttribute('target', '_blank');
+            detailLink.setAttribute('rel', 'noopener noreferrer');
+            detailLink.style.display = "inline-flex";
+        } else {
+            detailLink.classList.add('detail-link-disabled');
+            detailLink.innerHTML = "Bientôt disponible en ligne";
+            detailLink.href = "#";
+            detailLink.removeAttribute('target');
+            detailLink.removeAttribute('rel');
+            detailLink.style.display = "inline-flex";
+        }
+    }
+
     panel.classList.add('active');
 }
 
 function closeDetail() {
+    document.body.classList.remove('detail-open');
+    if (controls) {
+        controls.enabled = true;
+        controls.autoRotate = true;
+    }
     document.getElementById('detailPanel').classList.remove('active');
 }
 
-function filterCategory(category) {
+function filterCategory(category, activeBtn) {
     currentFilter = category;
 
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+    } else {
+        const match = document.querySelector(`.filter-btn[data-category="${category}"]`);
+        if (match) match.classList.add('active');
+    }
 
     tiles.forEach((tile, index) => {
         const project = tile.userData.project;

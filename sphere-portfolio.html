@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Sphère 3D</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sphere-portfolio.css">
+</head>
+
+<body>
+
+
+    <div class="loader" id="loader">
+        <div class="spinner mb-4"></div>
+        <div class="text-sm text-gray-400 tracking-widest">CHARGEMENT...</div>
+    </div>
+
+
+    <div id="canvas-container"></div>
+
+    <div class="hover-label" id="hoverLabel">Projet</div>
+
+
+    <div class="ui-layer flex flex-col justify-between p-6">
+
+
+        <header class="flex justify-between items-start pointer-events-auto">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tighter mb-1">MON PORTFOLIO</h1>
+                <p class="text-xs text-gray-400 tracking-widest">SPHÈRE INTERACTIVE 3D</p>
+            </div>
+
+            <div class="flex gap-2 flex-wrap justify-end max-w-md">
+                <button class="filter-btn active px-4 py-2 rounded-full border border-white/20 text-xs backdrop-blur-sm" data-category="all">
+                    Tous
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-white/20 text-xs backdrop-blur-sm hover:bg-white/10" data-category="web">
+                    Web
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-white/20 text-xs backdrop-blur-sm hover:bg-white/10" data-category="desktop">
+                    Desktop
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-white/20 text-xs backdrop-blur-sm hover:bg-white/10" data-category="jeux videos">
+                    Jeux videos
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-white/20 text-xs backdrop-blur-sm hover:bg-white/10" data-category="IA">
+                    IA
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full border border-white/20 text-xs backdrop-blur-sm hover:bg-white/10" data-category="Recherche">
+                    Recherche
+                </button>
+            </div>
+        </header>
+
+        <div class="side-nav side-nav-left pointer-events-auto">
+            <a href="index.html" title="Présentation" class="side-link group">
+                <div class="side-label side-label-rotated">
+                    PRÉSENTATION
+                </div>
+                <div class="side-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+
+        <div class="side-nav side-nav-right pointer-events-auto">
+            <a href="contact.html" title="Contactez-moi" class="side-link group">
+                <div class="side-label">
+                    CONTACTEZ-MOI
+                </div>
+                <div class="side-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+
+        <footer class="flex justify-between items-end pointer-events-auto">
+            <div class="text-xs text-gray-500">
+                <p class="mb-2 text-gray-300">CONTRÔLES</p>
+                <div class="flex gap-4">
+                    <span class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full"></span> Cliquez pour ouvrir
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-white/50 rounded-full"></span> Glissez pour tourner
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-white/50 rounded-full"></span> Scroll pour zoomer
+                    </span>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <div class="text-3xl font-bold" id="projectCount">0</div>
+                <div class="text-xs text-gray-500">PROJETS</div>
+            </div>
+        </footer>
+    </div>
+
+
+    <div class="detail-panel" id="detailPanel">
+        <button class="close-btn" id="closeDetailBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <div class="p-8 pt-16">
+            <span id="detailCategory" class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
+                CATÉGORIE
+            </span>
+
+            <h2 id="detailTitle" class="text-4xl font-bold mb-4 leading-tight">Titre du Projet</h2>
+
+            <div class="w-full h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-6 overflow-hidden border border-white/10">
+                <div id="detailImage" class="w-full h-full bg-cover bg-center"></div>
+            </div>
+
+            <div class="prose prose-invert max-w-none">
+                <p id="detailDescription" class="text-gray-300 leading-relaxed mb-6">
+                    Description du projet...
+                </p>
+
+                <h3 class="text-lg font-semibold mb-3 text-white">Technologies utilisées</h3>
+                <div id="detailSkills" class="flex flex-wrap gap-2 mb-6">
+
+                </div>
+
+                <h3 class="text-lg font-semibold mb-3 text-white">Détails</h3>
+                <ul id="detailList" class="space-y-2 text-gray-400 text-sm mb-8">
+
+                </ul>
+
+                <a id="detailLink" href="#" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">
+                    Voir le projet
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <button id="themeToggle" title="Changer le thème">
+        <svg id="sunIcon" class="icon-hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <script src="assets/javascript/script.js"></script>
+</body>
+
+</html>

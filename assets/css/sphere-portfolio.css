@@ -1,0 +1,193 @@
+/* ===== LIGHT MODE — sphere-portfolio.html ===== */
+
+body.light-mode {
+    background: #e2e3e7;
+    color: #111;
+}
+
+body.light-mode .ui-layer h1,
+body.light-mode .ui-layer p,
+body.light-mode .ui-layer span,
+body.light-mode .ui-layer div {
+    color: #111 !important;
+}
+
+body.light-mode .ui-layer .text-gray-400 {
+    color: #555 !important;
+}
+
+body.light-mode .ui-layer .text-gray-500 {
+    color: #666 !important;
+}
+
+body.light-mode .ui-layer .text-gray-300 {
+    color: #333 !important;
+}
+
+body.light-mode .filter-btn {
+    background: rgba(0, 0, 0, 0.07) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    color: #111 !important;
+}
+
+body.light-mode .filter-btn.active {
+    background: rgba(0, 0, 0, 0.18) !important;
+    border-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+body.light-mode .detail-panel {
+    background: rgba(245, 245, 250, 0.97) !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #111 !important;
+}
+
+body.light-mode .detail-panel h2,
+body.light-mode .detail-panel h3,
+body.light-mode .detail-panel p,
+body.light-mode .detail-panel li,
+body.light-mode .detail-panel span {
+    color: #111 !important;
+}
+
+body.light-mode .detail-panel .text-gray-300,
+body.light-mode .detail-panel .text-gray-400 {
+    color: #444 !important;
+}
+
+body.light-mode .close-btn {
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #111 !important;
+}
+
+body.light-mode .skill-tag {
+    background: rgba(0, 0, 0, 0.06) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #222 !important;
+}
+
+body.light-mode .side-link {
+    color: #111 !important;
+}
+
+body.light-mode .side-label,
+body.light-mode .side-icon {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    color: #111 !important;
+}
+
+body.light-mode .loader {
+    background: #e2e3e7;
+}
+
+body.light-mode .spinner {
+    border-color: rgba(0, 0, 0, 0.1);
+    border-top-color: #111;
+}
+
+body.light-mode .hover-label {
+    background: rgba(255, 255, 255, 0.95);
+    color: #111;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .hover-label::after {
+    border-color: rgba(255, 255, 255, 0.95) transparent transparent transparent;
+}
+
+/* Theme toggle button */
+
+#themeToggle {
+    position: fixed;
+    bottom: 24px;
+    right: 80px;
+    z-index: 200;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+#themeToggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(20deg);
+}
+
+body.light-mode #themeToggle {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #111;
+}
+
+body.light-mode #themeToggle:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* Side navigation */
+
+.side-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.side-nav-left {
+    left: 24px;
+}
+
+.side-nav-right {
+    right: 24px;
+}
+
+.side-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.side-label {
+    writing-mode: vertical-rl;
+    letter-spacing: 0.15em;
+    padding: 14px 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.side-label-rotated {
+    transform: rotate(180deg);
+}
+
+.side-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}

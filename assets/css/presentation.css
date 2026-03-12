@@ -77,6 +77,11 @@ body {
     background: rgba(34, 197, 94, 0.15);
 }
 
+.tech-tag-accent {
+    border-color: rgba(147, 112, 219, 0.4);
+    color: #c4b5fd;
+}
+
 .back-btn {
     display: inline-flex;
     align-items: center;
