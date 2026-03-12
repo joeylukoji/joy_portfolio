@@ -122,13 +122,13 @@
 
     {
         id: 12,
-        title: "",
-        category: "",
+        title: "Plateforme financiere de transaction paypal, mobile money et gestionnaire de paiement par api",
+        category: "web",
         color: "#f59e0b",
-        image: "",
-        description: "",
-        skills: ["", "", "", ""],
-        details: ["", "", "", ""],
+        image: "assets/img/Plateforme_fiinanciere.png",
+        description: "Plateforme financiere de transaction paypal, mobile money et gestionnaire de paiement par api pour permettre la circulation financiere en ligne plus facile pour les congolais ",
+        skills: ["Vites js", "Flask ", " connexion api externe"],
+        details: ["Api de paiement", "Postgresql", "Docker"],
         link: ""
     }
 ];
