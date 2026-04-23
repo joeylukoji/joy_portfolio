@@ -1,16 +1,3 @@
-function handleSubmit(e) {
-    const name = document.getElementById('inputName').value.trim();
-    const email = document.getElementById('inputEmail').value.trim();
-    const subject = document.getElementById('inputSubject').value.trim();
-    const message = document.getElementById('inputMessage').value.trim();
-
-    if (!name || !email || !subject || !message) {
-        e.preventDefault();
-        alert('Veuillez remplir tous les champs obligatoires.');
-        return;
-    }
-}
-
 function toggleTheme() {
     const body = document.body;
     const sun = document.getElementById('sunIcon');
@@ -25,11 +12,6 @@ function toggleTheme() {
     const themeBtn = document.getElementById('themeToggle');
     if (themeBtn) {
         themeBtn.addEventListener('click', toggleTheme);
-    }
-
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', handleSubmit);
     }
 })();
 

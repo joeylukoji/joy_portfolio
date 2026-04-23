@@ -1,0 +1,53 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    container_name: portfolio_app
+    working_dir: /var/www
+    volumes:
+      - ./backend:/var/www
+    depends_on:
+      - mysql
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: portfolio_nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:8.4
+    container_name: portfolio_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: portfolio
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: portfolio
+      MYSQL_PASSWORD: portfolio
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:5.2-apache
+    container_name: portfolio_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: portfolio
+      PMA_PASSWORD: portfolio
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
