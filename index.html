@@ -156,12 +156,13 @@ footer{background:var(--ink);color:#8e9096;font:12px var(--mono);padding-block:2
   .nav ul{flex-wrap:nowrap;gap:2px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;font-size:12px;min-width:0;mask-image:linear-gradient(90deg,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:14px}
   .nav ul::-webkit-scrollbar{display:none}
   .nav ul a{padding:10px 9px;white-space:nowrap}
+  .nav .mobile-hidden{display:none}
   .hero .wrap{padding-top:88px;gap:14px}
   .portrait{max-width:none;margin:0 -8px;width:calc(100% + 16px)}
   .side,.side.l{text-align:center;align-items:center}
+  .side:last-child{display:none}
   .side h1,.side p.h{font-size:clamp(26px,8vw,34px)}
   .side p{max-width:36ch}
-  .side:last-child{padding-bottom:48px}
   .glyphs{display:none}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fact{padding:16px}
@@ -186,9 +187,9 @@ footer{background:var(--ink);color:#8e9096;font:12px var(--mono);padding-block:2
     <a class="mark" href="#top" aria-label="Retour en haut">JL</a>
     <ul>
       <li><a href="#about">à propos</a></li>
-      <li><a href="#research">recherche</a></li>
+      <li class="mobile-hidden"><a href="#research">recherche</a></li>
       <li><a href="#work">projets</a></li>
-      <li><a href="#path">parcours</a></li>
+      <li class="mobile-hidden"><a href="#path">parcours</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
   </div>
