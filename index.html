@@ -103,6 +103,16 @@ h2{font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing
 .note{font:12px var(--mono);color:var(--muted);margin-top:28px}
 .note a{text-decoration:underline}
 
+/* award */
+.award-card{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(24px,4vw,48px);margin-top:40px;padding:clamp(20px,4vw,40px);background:var(--wash);border:1px solid var(--rule);border-radius:16px}
+.award-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-width:0}
+.award-copy h3{margin:0;font-size:clamp(24px,3vw,34px);font-weight:600;line-height:1.15;letter-spacing:-.03em}
+.award-copy p{margin:0;color:var(--muted);font-size:15px}
+.award-copy strong{color:var(--ink);font-weight:600}
+.award-image{display:block;min-width:0;overflow:hidden;border:1px solid var(--rule);border-radius:10px;background:#10221d;box-shadow:0 12px 30px rgba(35,35,37,.12);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.award-image:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(35,35,37,.18)}
+.award-image img{display:block;width:100%;height:auto}
+
 /* timeline */
 .tl{list-style:none;margin:48px 0 0;padding:0;display:flex;flex-direction:column}
 .tl li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--rule)}
@@ -157,6 +167,7 @@ footer{background:var(--ink);color:#8e9096;font:12px var(--mono);padding-block:2
   .nav ul::-webkit-scrollbar{display:none}
   .nav ul a{padding:10px 9px;white-space:nowrap}
   .nav .mobile-hidden{display:none}
+  .award-card{grid-template-columns:minmax(0,1fr)}
   .hero .wrap{padding-top:88px;gap:14px}
   .portrait{max-width:none;margin:0 -8px;width:calc(100% + 16px)}
   .side,.side.l{text-align:center;align-items:center}
@@ -189,6 +200,7 @@ footer{background:var(--ink);color:#8e9096;font:12px var(--mono);padding-block:2
       <li><a href="#about">à propos</a></li>
       <li class="mobile-hidden"><a href="#research">recherche</a></li>
       <li><a href="#work">projets</a></li>
+      <li class="mobile-hidden"><a href="#award">distinction</a></li>
       <li class="mobile-hidden"><a href="#path">parcours</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
@@ -366,6 +378,24 @@ footer{background:var(--ink);color:#8e9096;font:12px var(--mono);padding-block:2
         <p>Chatbot NLP fondé sur une architecture RAG, qui récupère des informations pertinentes dans sa base de connaissances pour générer des réponses contextualisées.</p>
         <a class="go" href="https://niketkaps.vercel.app" target="_blank" rel="noopener">niketkaps.vercel.app ↗</a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="award gut" id="award">
+  <div class="wrap">
+    <div class="eyebrow pre" style="--c:var(--yellow)">distinction</div>
+    <h2 class="pre">Une récompense pour Fast_automatisation</h2>
+    <div class="award-card pre">
+      <div class="award-copy">
+        <div class="meta"><span>Hacktoberfest Hack Day Lubumbashi</span><span>31 octobre 2026</span></div>
+        <h3>Best Open-Source AI Project</h3>
+        <p>Prix remporté avec <strong>Fast_automatisation</strong> lors du Hacktoberfest organisé par DevCom_UPL à Lubumbashi.</p>
+        <p class="mono">Lauréat · Hacktoberfest 2026</p>
+      </div>
+      <a class="award-image" href="assets/img/hacktoberfest-2026-award.png" target="_blank" rel="noopener" aria-label="Ouvrir le certificat Hacktoberfest 2026">
+        <img src="assets/img/hacktoberfest-2026-award.png" alt="Certificat Hacktoberfest 2026 décerné à Joy Mbiya pour Best Open-Source AI Project avec Fast_automatisation." loading="lazy" decoding="async">
+      </a>
     </div>
   </div>
 </section>
