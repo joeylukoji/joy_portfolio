@@ -104,7 +104,8 @@ h2{font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing
 .note a{text-decoration:underline}
 
 /* award */
-.award-card{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(24px,4vw,48px);margin-top:40px;padding:clamp(20px,4vw,40px);background:var(--wash);border:1px solid var(--rule);border-radius:16px}
+.award-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:20px;margin-top:40px}
+.award-card{display:flex;flex-direction:column;align-items:stretch;gap:20px;margin-top:0;padding:24px;background:var(--wash);border:1px solid var(--rule);border-radius:16px}
 .award-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-width:0}
 .award-copy h3{margin:0;font-size:clamp(24px,3vw,34px);font-weight:600;line-height:1.15;letter-spacing:-.03em}
 .award-copy p{margin:0;color:var(--muted);font-size:15px}
@@ -167,7 +168,7 @@ footer{background:var(--ink);color:#8e9096;font:12px var(--mono);padding-block:2
   .nav ul::-webkit-scrollbar{display:none}
   .nav ul a{padding:10px 9px;white-space:nowrap}
   .nav .mobile-hidden{display:none}
-  .award-card{grid-template-columns:minmax(0,1fr)}
+  .award-grid{grid-template-columns:minmax(0,1fr)}
   .hero .wrap{padding-top:88px;gap:14px}
   .portrait{max-width:none;margin:0 -8px;width:calc(100% + 16px)}
   .side,.side.l{text-align:center;align-items:center}
@@ -385,17 +386,28 @@ footer{background:var(--ink);color:#8e9096;font:12px var(--mono);padding-block:2
 <section class="award gut" id="award">
   <div class="wrap">
     <div class="eyebrow pre" style="--c:var(--yellow)">distinction</div>
-    <h2 class="pre">Une récompense pour Fast_automatisation</h2>
-    <div class="award-card pre">
-      <div class="award-copy">
-        <div class="meta"><span>Hacktoberfest Hack Day Lubumbashi</span><span>31 octobre 2026</span></div>
-        <h3>Best Open-Source AI Project</h3>
-        <p>Prix remporté avec <strong>Fast_automatisation</strong> lors du Hacktoberfest organisé par DevCom_UPL à Lubumbashi.</p>
-        <p class="mono">Lauréat · Hacktoberfest 2026</p>
-      </div>
-      <a class="award-image" href="assets/img/hacktoberfest-2026-award.png" target="_blank" rel="noopener" aria-label="Ouvrir le certificat Hacktoberfest 2026">
-        <img src="assets/img/hacktoberfest-2026-award.png" alt="Certificat Hacktoberfest 2026 décerné à Joy Mbiya pour Best Open-Source AI Project avec Fast_automatisation." loading="lazy" decoding="async">
-      </a>
+    <h2 class="pre">Récompenses Hacktoberfest</h2>
+    <div class="award-grid">
+      <article class="award-card pre">
+        <div class="award-copy">
+          <div class="meta"><span>Hacktoberfest Hack Day Lubumbashi</span><span>31 octobre 2026</span></div>
+          <h3>Best Open-Source AI Project</h3>
+          <p>Prix remporté avec <strong>Fast_automatisation</strong> lors du Hacktoberfest organisé par DevCom_UPL à Lubumbashi.</p>
+        </div>
+        <a class="award-image" href="assets/img/hacktoberfest-2026-award.png" target="_blank" rel="noopener" aria-label="Ouvrir le certificat Hacktoberfest 2026 — Best Open-Source AI Project">
+          <img src="assets/img/hacktoberfest-2026-award.png" alt="Certificat Hacktoberfest 2026 décerné à Joy Mbiya pour Best Open-Source AI Project avec Fast_automatisation." loading="lazy" decoding="async">
+        </a>
+      </article>
+      <article class="award-card pre">
+        <div class="award-copy">
+          <div class="meta"><span>Hacktoberfest Hack Day Lubumbashi</span><span>31 octobre 2026</span></div>
+          <h3>Best Use of Gemma 4</h3>
+          <p>Prix remporté avec <strong>Fast_automatisation</strong> lors du Hacktoberfest organisé par DevCom_UPL à Lubumbashi.</p>
+        </div>
+        <a class="award-image" href="assets/img/hacktoberfest-2026-gemma4-award.png" target="_blank" rel="noopener" aria-label="Ouvrir le certificat Hacktoberfest 2026 — Best Use of Gemma 4">
+          <img src="assets/img/hacktoberfest-2026-gemma4-award.png" alt="Certificat Hacktoberfest 2026 décerné à Joy Mbiya pour Best Use of Gemma 4 avec Fast_automatisation." loading="lazy" decoding="async">
+        </a>
+      </article>
     </div>
   </div>
 </section>
